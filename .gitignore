@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.env
+
+# Flutter / Dart build outputs
+frontend/build/
+frontend/.dart_tool/
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/.packages
+frontend/pubspec.lock
+frontend/ios/
+frontend/android/
+frontend/linux/
+frontend/macos/
+frontend/windows/
+frontend/.idea/
+frontend/strength_training_app.iml
+frontend/analysis_options.yaml
+frontend/test/
+frontend/README.md
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
