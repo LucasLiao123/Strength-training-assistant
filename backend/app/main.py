@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 from .exercise_seed import EXERCISES
 from .models import AdjustPlanRequest, AdjustPlanResponse, Exercise, ExerciseInput, PlanResponse, UserProfile, VoiceParseRequest, VoiceParseResponse
@@ -11,6 +12,14 @@ app = FastAPI(
     title='Strength Training MVP API',
     version='0.1.0',
     description='力量训练智能 APP 的 MVP 后端，仅面向普通用户训练管理，不包含任何教练端功能。',
+)
+
+# 允许所有来源（前端部署在 Vercel 等任意域名均可访问）
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_methods=['*'],
+    allow_headers=['*'],
 )
 
 exercise_store = list(EXERCISES)
