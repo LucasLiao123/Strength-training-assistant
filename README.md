@@ -58,12 +58,41 @@ uvicorn app.main:app --reload
 
 ## 前端启动
 
-确保本机已安装 Flutter SDK。
+### 第一步：安装 Flutter SDK
+
+如果本机还没有 Flutter，去官网下载对应系统版本：
+
+- Windows：https://docs.flutter.dev/get-started/install/windows
+- macOS：https://docs.flutter.dev/get-started/install/macos
+- Linux：https://docs.flutter.dev/get-started/install/linux
+
+> **中国用户必须设置国内镜像**，否则依赖下载会超时失败。
+> 在环境变量（或每次运行前）设置：
+>
+> ```
+> PUB_HOSTED_URL=https://pub.flutter-io.cn
+> FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+> ```
+>
+> Windows PowerShell 临时设置：
+> ```powershell
+> $env:PUB_HOSTED_URL = "https://pub.flutter-io.cn"
+> $env:FLUTTER_STORAGE_BASE_URL = "https://storage.flutter-io.cn"
+> ```
+
+### 第二步：运行前端
 
 ```bash
 cd frontend
 flutter pub get
-flutter run
+flutter run -d chrome --web-port 8484
+```
+
+也可以指定其他设备：
+
+```bash
+flutter devices        # 查看可用设备
+flutter run -d <设备ID>
 ```
 
 ## 已实现模块
