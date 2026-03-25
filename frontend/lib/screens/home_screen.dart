@@ -15,17 +15,25 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = const [
-    ExerciseLibraryScreen(),
-    PlanScreen(),
-    VoiceScreen(),
-    ReportScreen(),
-  ];
+  Widget _buildCurrentPage() {
+    switch (_currentIndex) {
+      case 0:
+        return const ExerciseLibraryScreen();
+      case 1:
+        return const PlanScreen();
+      case 2:
+        return const VoiceScreen();
+      case 3:
+        return const ReportScreen();
+      default:
+        return const ExerciseLibraryScreen();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: _currentIndex, children: _pages),
+      body: _buildCurrentPage(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) => setState(() => _currentIndex = index),

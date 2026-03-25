@@ -18,7 +18,13 @@ class VoiceProvider extends ChangeNotifier {
   Map<String, dynamic>? get lastParsedCommand => _lastParsedCommand;
 
   Future<void> init() async {
-    await _voiceService.init();
+    try {
+      await _voiceService.init();
+    } catch (e) {
+      // Silently fail—app can continue without voice service
+      _feedback = '提示：当前环境不支持语音功能';
+      notifyListeners();
+    }
   }
 
   Future<void> toggleListening() async {
